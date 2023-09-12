@@ -13,7 +13,7 @@ def botAnswer(request):
 
     
 
-    return JsonResponse({'resposta': msg})
+    return JsonResponse({'resposta': resp})
 
 
 def inputMsg(option):

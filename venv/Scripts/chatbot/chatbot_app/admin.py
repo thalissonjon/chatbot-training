@@ -8,4 +8,4 @@ admin.site.register(userMsg, optionsAdmin)
 
 class respAdmin(admin.ModelAdmin):
     list_display = ['msg', 'resp']
-admin.site.register(userMsg, respAdmin)
+admin.site.register(botMsg, respAdmin)
