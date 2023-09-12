@@ -4,16 +4,24 @@ from django.db import models
 
 # Create your models here.
 class userMsg(models.Model):
-    userText = models.TextField()
+    userText = models.PositiveSmallIntegerField()
 
     def __str__(self):
         return self.userText
     
 class botMsg(models.Model):
+    INICIO = (
+        ('1', 'Consultas'),
+        ('2', 'Exames'),
+        ('3', 'Informações')
+    )
+
     CONSULTAS = (
-        ('1', 'Verificar consultas'),
-        ('2,', 'Agendar consultas'),
-        ('3', 'Retornar')
+        
+    )
+
+    EXAMES = (
+        ('')
     )
 
     choiceInt = models.PositiveSmallIntegerField(
@@ -21,16 +29,12 @@ class botMsg(models.Model):
         default=3
     )
 
+    
     botResp = models.ForeignKey(userMsg, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=100)
-    pos = models.IntegerField(default=0)
+    # choice_text = models.CharField(max_length=100)
+    # pos = models.IntegerField(default=0)
 
     def __str__(self):
         return self.choice_text
 
 
-    
-
-    # choice = models.PositiveSmallIntegerField(
-    #     choices = Consultas.choices
-    # )

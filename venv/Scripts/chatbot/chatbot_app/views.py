@@ -1,20 +1,26 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 
+from .models import userMsg, botMsg
+
 def botAnswer(request):
     option = request.GET.get('option') # pega da pagina
 
-    match option:
-        case '1':
-            resposta = 'A opçao escolhida foi a numero 1.'
-        case '2':
-            resposta = 'A opçao escolhida foi a numero 2.'
-        case '3':
-            resposta = 'A opçao escolhida foi a numero 1.'
-        case _:
-          resposta = 'Entrada invalida'
+    msg = userMsg(userText='oiii teste teste')
+    print(msg)
 
-    return JsonResponse({'resposta': resposta})
+    msg, resp = inputMsg(option)
 
+    
+
+    return JsonResponse({'resposta': msg})
+
+
+def inputMsg(option):
+    msg = userMsg.objects.get(option = option)
+    resp = botMsg.objects.filter(msg = msg)
+    return(msg.userText, resp.botResp)
+
+    # resp = botMsg.objects.filter(resp = resp)
 
 
