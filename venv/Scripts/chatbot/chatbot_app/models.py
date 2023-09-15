@@ -10,7 +10,7 @@ class userMsg(models.Model):
         return self.text
     
 class botMsg(models.Model):
-    user_msg = models.ForeignKey(userMsg, on_delete=models.CASCADE)
+    user_msg = models.ForeignKey(userMsg, on_delete=models.CASCADE, null = True)
     text = models.TextField()
 
     def __str__(self):
